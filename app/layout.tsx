@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Theme } from "@radix-ui/themes";
+import { Flex, Text, Theme } from "@radix-ui/themes";
 import "./globals.css";
 import { Merriweather_Sans, Rubik } from 'next/font/google'
 
@@ -36,6 +36,20 @@ export default function RootLayout({
           radius="full"
         >
           {children}
+          <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
+            <Flex gap="3">
+              <Text>Copyright &copy; 2025</Text>
+              <a
+                className="flex items-center gap-2 hover:underline hover:underline-offset-4"
+                href="https://github.com/dalecb13"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Dale Chang
+              </a>
+              
+            </Flex>
+          </footer>
         </Theme>
       </body>
     </html>
