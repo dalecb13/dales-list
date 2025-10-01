@@ -1,20 +1,5 @@
 import { ProductDetails, SummaryData } from "@/models";
 
-export const summaryData: SummaryData[] = [
-  {
-    slug: 'risketos-original',
-    productName: "Risketos (Original)",
-    description: 'Risketos Original es un snack similar a Cheetos. Ellos son crujientes con sabor de queso chedar.',
-    location: {
-      city: "Madrid",
-      country: "España",
-    },
-    overallRating: 3.9,
-    imageUrl: '/risketos.jpg',
-    type: 'Snack',
-  }
-];
-
 export const detailesDeComida: ProductDetails[] = [
   {
     slug: 'risketos-original',
@@ -24,6 +9,7 @@ export const detailesDeComida: ProductDetails[] = [
       price: 0.99,
       currency: '€',
       imageUrl: '/risketos.jpg',
+      type: "Snack",
     },
     location: {
       city: "Madrid",
@@ -38,6 +24,33 @@ export const detailesDeComida: ProductDetails[] = [
         bitterness: 1,
         mouthfeel: 'Soft',
       }
-    }
+    },
+  },
+];
+
+export const summaryData: SummaryData[] = detailesDeComida.map(comida => {
+  return {
+    slug: comida.slug,
+    productName: comida.product.name,
+    description: comida.product.description,
+    location: comida.location,
+    overallRating: comida.rating.overallRating,
+    imageUrl: comida.product.imageUrl,
+    type: comida.product.type,
   }
-]
+});
+
+[
+  {
+    slug: 'risketos-original',
+    productName: "Risketos (Original)",
+    description: 'Risketos Original es un snack similar a Cheetos. Ellos son crujientes con sabor de queso chedar.',
+    location: {
+      city: "Madrid",
+      country: "España",
+    },
+    overallRating: 3.9,
+    imageUrl: '/risketos.jpg',
+    type: 'Snack',
+  }
+];

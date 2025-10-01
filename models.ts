@@ -4,6 +4,7 @@ export type ProductData = {
   price: number
   currency: string
   imageUrl: string
+  type: string
 }
 
 export type LocationData = {
