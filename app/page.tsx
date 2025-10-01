@@ -25,6 +25,8 @@ export default function Home() {
                 description={datum.description}
                 location={datum.location}
                 overallRating={datum.overallRating}
+                price={datum.price}
+                currency={datum.currency}
                 type={datum.type}
                 imageUrl={datum.imageUrl}
               />;

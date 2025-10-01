@@ -35,6 +35,8 @@ export type SummaryData = {
   overallRating: number
   imageUrl: string
   type: string
+  currency: string
+  price: number
 }
 
 export type ProductDetails = {

@@ -21,16 +21,20 @@ const ProductSummary: React.FC<SummaryData> = (summaryData: SummaryData) => {
             {summaryData.productName}
           </Text>
           <Text as="div" size="2" mb="4">{summaryData.description}</Text>
-          <div className="flex flex-row items-center gap-3">
-            <Text as="div" size="2" color="gray">
-              {summaryData.overallRating}
-            </Text>
-            <Rating value={summaryData.overallRating} readOnly>
-              {Array.from({ length: 5 }).map((_, index) => (
-                <RatingButton className="text-yellow-500" key={index} />
-              ))}
-            </Rating>
-          </div>
+
+          <Flex justify="between"  align="center">
+            <Text>{summaryData.currency}{summaryData.price}</Text>
+            <div className="flex flex-row items-center gap-1">
+              <Text as="div" size="2" color="gray">
+                {summaryData.overallRating}
+              </Text>
+              <Rating value={summaryData.overallRating} readOnly>
+                {Array.from({ length: 5 }).map((_, index) => (
+                  <RatingButton className="text-yellow-500" key={index} />
+                ))}
+              </Rating>
+            </div>
+          </Flex>
         </Box>
       </Card>
     </Link>
