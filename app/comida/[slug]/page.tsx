@@ -1,5 +1,7 @@
+import Image from 'next/image'
 import { detailesDeComida } from "@/data"
 import { ProductDetails } from "@/models"
+import { Container, Section } from '@radix-ui/themes';
 
 export async function generateStaticParams() {
   const comidas: ProductDetails[] = detailesDeComida;
@@ -9,16 +11,29 @@ export async function generateStaticParams() {
   }))
 }
 
+const getComida = async (slug: string): Promise<ProductDetails> => {
+  return detailesDeComida
+    .find((comida) => comida.slug === slug)!
+}
+
 export default async function ComidaPage({
   params,
 }: {
   params: Promise<{ slug: string }>
 }) {
   const { slug } = await params
-  // const post = await getPost(slug)
+  const comida = await getComida(slug)
+  console.log(comida)
 
-  return <div>
-    <h1>Hola, Page de Comida!</h1>
+  return <Section className="">
+    <div className="relative h-100">
+      <Image
+        fill
+        priority
+        src={comida.product.imageUrl}
+        alt={comida.product.name}
+      />
+    </div>
     <p>{slug}</p>
-  </div>
+  </Section>
 }
