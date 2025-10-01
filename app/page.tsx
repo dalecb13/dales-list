@@ -10,7 +10,12 @@ export default function Home() {
           <Heading as="h1">Dale&apos;s List</Heading>
           <Text>A food rating website</Text>
         </Section>
-        <Grid columns="3" gap="3" rows="repeat(2, 500px)" width="auto">
+        <Grid
+          columns={{ initial: "1", md: "2", lg: "3" }}
+          gap="3"
+          rows="repeat(2, 500px)"
+          width="auto"
+        >
           {
             summaryData.map(datum => {
               return <ProductSummary
