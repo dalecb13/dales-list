@@ -2,13 +2,13 @@ import { SummaryData } from "@/models";
 
 const summaryData: SummaryData[] = [
   {
-    productName: "Pineapple",
+    productName: "Risketos",
     location: {
-      city: "San Francisco",
-      country: "United States",
+      city: "Madrid",
+      country: "España",
     },
-    overallRating: 5,
-    imageUrl: '',
+    overallRating: 3.9,
+    imageUrl: '/risketos.jpg',
   }
 ];
 
