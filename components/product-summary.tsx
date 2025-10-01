@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from 'next/link';
 import { Box, Card, Flex, Text } from "@radix-ui/themes";
 import { SummaryData } from "@/models";
+import { Rating, RatingButton } from "./ui/shadcn-io/rating";
 
 const ProductSummary: React.FC<SummaryData> = (summaryData: SummaryData) => {
   return (
@@ -19,10 +20,17 @@ const ProductSummary: React.FC<SummaryData> = (summaryData: SummaryData) => {
           <Text as="div" size="2" weight="bold">
             {summaryData.productName}
           </Text>
-          <Text>{summaryData.description}</Text>
-          <Text as="div" size="2" color="gray">
-            {summaryData.overallRating}
-          </Text>
+          <Text as="div" size="2" mb="4">{summaryData.description}</Text>
+          <div className="flex flex-row items-center gap-3">
+            <Text as="div" size="2" color="gray">
+              {summaryData.overallRating}
+            </Text>
+            <Rating value={summaryData.overallRating} readOnly>
+              {Array.from({ length: 5 }).map((_, index) => (
+                <RatingButton className="text-yellow-500" key={index} />
+              ))}
+            </Rating>
+          </div>
         </Box>
       </Card>
     </Link>
