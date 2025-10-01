@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { detailesDeComida } from "@/data"
 import { ProductDetails } from "@/models"
-import { Container, Section } from '@radix-ui/themes';
+import { Container, Heading, Section, Text } from '@radix-ui/themes';
 
 export async function generateStaticParams() {
   const comidas: ProductDetails[] = detailesDeComida;
@@ -26,7 +26,7 @@ export default async function ComidaPage({
   console.log(comida)
 
   return <Section className="">
-    <div className="relative h-100">
+    <div className="relative h-100 mb-4">
       <Image
         fill
         priority
@@ -34,6 +34,8 @@ export default async function ComidaPage({
         alt={comida.product.name}
       />
     </div>
-    <p>{slug}</p>
+    <Container mx="4" align={"center"}>
+      <Heading as="h1" align={"center"}>{comida.product.name}</Heading>
+    </Container>
   </Section>
 }
