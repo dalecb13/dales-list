@@ -8,7 +8,7 @@ const ProductSummary: React.FC<SummaryData> = (summaryData: SummaryData) => {
   return (
     <Link href={`/comida/${summaryData.slug}`}>
       <Card>
-        <Flex gap="3" align="center">
+        <Flex gap="3" align="center" mb="4">
           <Image
             src={summaryData.imageUrl}
             alt={summaryData.productName}
