@@ -1,6 +1,6 @@
 import ProductSummary from "@/components/product-summary";
-import summaryData from "@/data";
-import { Heading, Section, Text } from "@radix-ui/themes";
+import { summaryData } from "@/data";
+import { Grid, Heading, Section, Text } from "@radix-ui/themes";
 
 export default function Home() {
   return (
@@ -10,19 +10,22 @@ export default function Home() {
           <Heading as="h1">Dale&apos;s List</Heading>
           <Text>A food rating website</Text>
         </Section>
-        <Section>
+        <Grid columns="3" gap="3" rows="repeat(2, 500px)" width="auto">
           {
             summaryData.map(datum => {
               return <ProductSummary
                 key={datum.productName}
+                slug={datum.slug}
                 productName={datum.productName}
+                description={datum.description}
                 location={datum.location}
                 overallRating={datum.overallRating}
+                type={datum.type}
                 imageUrl={datum.imageUrl}
               />;
             })
           }
-        </Section>
+        </Grid>
       </main>
     </div>
   );

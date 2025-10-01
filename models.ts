@@ -27,16 +27,19 @@ export type RatingData = {
 // - - - - - - - - - -
 
 export type SummaryData = {
+  slug: string
   productName: string
+  description: string
   location: LocationData
   overallRating: number
   imageUrl: string
+  type: string
 }
 
 export type ProductDetails = {
+  slug: string
   product: ProductData
   location: LocationData
-  tastingNotes: TastingNotes
   rating: RatingData
 }
 
