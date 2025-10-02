@@ -46,6 +46,6 @@ export default async function ComidaPage({
 
     <MapWrapper position={comida.product.location.coordinates} zoom={13} />
 
-    <StarRating rating={comida.rating.overallRating} />
+    <StarRating rating={comida.rating.overallRating} slug={comida.slug} />
   </Section>
 }

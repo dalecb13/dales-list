@@ -4,9 +4,10 @@ import { GOLD, OFF_WHITE } from "@/colors";
 
 type StarRatingProps = {
   rating: number
+  slug: string
 }
 
-const StarRating: React.FC<StarRatingProps> = ({ rating }) => {
+const StarRating: React.FC<StarRatingProps> = ({ rating, slug }) => {
   return (
     <Flex direction={"row"} justify="end" gap="1">
       <Text as="div" size="4" color="gray">
@@ -32,10 +33,10 @@ const StarRating: React.FC<StarRatingProps> = ({ rating }) => {
               } else if (index < rating && rating < (index + 1)) {
                 const ratio = (rating - index) % 1
                 const percentageFill = `${Math.floor(ratio * 100)}%`
-                console.log('percentageFill', percentageFill)
+                const id = `grad-${slug}`
                 return <svg key={index} height="24" viewBox="0 0 24 24" width="24">
                   <defs>
-                    <linearGradient id="grad2">
+                    <linearGradient id={id}>
                       <stop offset="0%" stopColor={GOLD} />
                       <stop offset={percentageFill} stopColor={GOLD} />
                       <stop offset={percentageFill} stopColor={OFF_WHITE} />
@@ -44,7 +45,7 @@ const StarRating: React.FC<StarRatingProps> = ({ rating }) => {
                   </defs>
                   <path d="M0 0h24v24H0z" fill="none" />
                   <path
-                    fill="url(#grad2)"
+                    fill={`url(#${id})`}
                     stroke="none"
                     strokeWidth="1.5"
                     d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"

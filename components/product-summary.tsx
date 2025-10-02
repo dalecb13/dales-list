@@ -10,6 +10,7 @@ const ProductSummary: React.FC<SummaryData> = (summaryData: SummaryData) => {
       <Card>
         <Flex gap="3" align="center" mb="4">
           <Image
+            priority
             src={summaryData.imageUrl}
             alt={summaryData.productName}
             width={300}
@@ -24,7 +25,7 @@ const ProductSummary: React.FC<SummaryData> = (summaryData: SummaryData) => {
 
           <Flex justify="between"  align="center">
             <Text>{summaryData.currency}{summaryData.price}</Text>
-            <StarRating rating={summaryData.overallRating} />
+            <StarRating rating={summaryData.overallRating} slug={summaryData.slug} />
           </Flex>
         </Box>
       </Card>
