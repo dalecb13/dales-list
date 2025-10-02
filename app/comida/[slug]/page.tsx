@@ -4,6 +4,7 @@ import { ProductDetails } from "@/models"
 import { Container, Flex, Heading, Section, Text } from '@radix-ui/themes';
 import { Rating, RatingButton } from '@/components/ui/shadcn-io/rating';
 import MapWrapper from '@/components/map-wrapper';
+import StarRating from '@/components/star-rating';
 
 export async function generateStaticParams() {
   const comidas: ProductDetails[] = detailesDeComida;
@@ -45,15 +46,6 @@ export default async function ComidaPage({
 
     <MapWrapper position={comida.product.location.coordinates} zoom={13} />
 
-    <div className="flex flex-row items-center gap-1">
-      <Text as="div" size="5" color="gray">
-        {comida.rating.overallRating}
-      </Text>
-      <Rating value={comida.rating.overallRating} readOnly>
-        {Array.from({ length: 5 }).map((_, index) => (
-          <RatingButton className="text-yellow-500" key={index} />
-        ))}
-      </Rating>
-    </div>
+    <StarRating rating={comida.rating.overallRating} />
   </Section>
 }

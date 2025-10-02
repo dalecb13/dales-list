@@ -52,7 +52,7 @@ export const detailesDeComida: ProductDetails[] = [
       }
     },
     rating: {
-      overallRating: 3.9,
+      overallRating: 3.7,
       tastingNotes: {
         saltiness: 1,
         sweetness: 1,
