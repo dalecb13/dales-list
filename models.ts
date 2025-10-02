@@ -1,15 +1,23 @@
+export type CompanyData = {
+  companyName: string
+  companyLink: string
+}
+
 export type ProductData = {
   name: string
+  company: CompanyData
+  productLink: string
   description: string
-  price: number
+  price: string
   currency: string
   imageUrl: string
   type: string
+  location: LocationData
 }
 
 export type LocationData = {
-  city: string
   country: string
+  coordinates: [number, number]
 }
 
 export type TastingNotes = {
@@ -17,6 +25,7 @@ export type TastingNotes = {
   sweetness: number,
   acidity: number,
   bitterness: number,
+  umami: number,
   mouthfeel: string
 }
 
@@ -31,18 +40,16 @@ export type SummaryData = {
   slug: string
   productName: string
   description: string
-  location: LocationData
   overallRating: number
   imageUrl: string
   type: string
   currency: string
-  price: number
+  price: string
 }
 
 export type ProductDetails = {
   slug: string
   product: ProductData
-  location: LocationData
   rating: RatingData
 }
 

@@ -5,15 +5,51 @@ export const detailesDeComida: ProductDetails[] = [
     slug: 'risketos-original',
     product: {
       name: "Risketos (Original)",
+      company: {
+        companyName: 'Risi',
+        companyLink: 'https://risi.es',
+      },
+      productLink: 'https://risi.es/es/snacks/risketos',
       description: 'Risketos Original es un snack similar a Cheetos. Ellos son crujientes con sabor de queso chedar.',
-      price: 0.99,
+      price: '1,43',
       currency: '€',
       imageUrl: '/risketos.jpg',
       type: "Snack",
+      location: {
+        country: "Spain",
+        coordinates: [3.7492, 40.4637],
+      }
     },
-    location: {
-      city: "Madrid",
-      country: "España",
+    rating: {
+      overallRating: 3.1,
+      tastingNotes: {
+        saltiness: 3,
+        sweetness: 2,
+        acidity: 1,
+        bitterness: 1,
+        umami: 3,
+        mouthfeel: 'Crunchy',
+      }
+    },
+  },
+  {
+    slug: 'carrefour-sardinillas-con-salsa-picantona',
+    product: {
+      name: "Carrefour Sardinillas con Salsa Picantona",
+      company: {
+        companyName: 'Carrefour',
+        companyLink: 'https://www.carrefour.es/',
+      },
+      productLink: 'https://www.carrefour.es/supermercado/sardinillas-con-salsa-picantona-classic-carrefour-60-g/R-VC4AECOMM-615271/p',
+      description: '',
+      price: '1.42',
+      currency: '€',
+      imageUrl: '/carrefour-sardinillas-con-salsa-picantona.jpg',
+      type: "Conservas",
+      location: {
+        country: "Spain",
+        coordinates: [3.7492, 40.4637]
+      }
     },
     rating: {
       overallRating: 3.9,
@@ -22,6 +58,7 @@ export const detailesDeComida: ProductDetails[] = [
         sweetness: 1,
         acidity: 1,
         bitterness: 1,
+        umami: 3,
         mouthfeel: 'Soft',
       }
     },
@@ -33,7 +70,6 @@ export const summaryData: SummaryData[] = detailesDeComida.map(comida => {
     slug: comida.slug,
     productName: comida.product.name,
     description: comida.product.description,
-    location: comida.location,
     overallRating: comida.rating.overallRating,
     imageUrl: comida.product.imageUrl,
     type: comida.product.type,

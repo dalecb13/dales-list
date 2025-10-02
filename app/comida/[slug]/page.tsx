@@ -1,7 +1,9 @@
 import Image from 'next/image'
 import { detailesDeComida } from "@/data"
 import { ProductDetails } from "@/models"
-import { Container, Heading, Section, Text } from '@radix-ui/themes';
+import { Container, Flex, Heading, Section, Text } from '@radix-ui/themes';
+import { Rating, RatingButton } from '@/components/ui/shadcn-io/rating';
+import MapWrapper from '@/components/map-wrapper';
 
 export async function generateStaticParams() {
   const comidas: ProductDetails[] = detailesDeComida;
@@ -11,7 +13,7 @@ export async function generateStaticParams() {
   }))
 }
 
-const getComida = async (slug: string): Promise<ProductDetails> => {
+const getComida = (slug: string): ProductDetails => {
   return detailesDeComida
     .find((comida) => comida.slug === slug)!
 }
@@ -19,11 +21,10 @@ const getComida = async (slug: string): Promise<ProductDetails> => {
 export default async function ComidaPage({
   params,
 }: {
-  params: Promise<{ slug: string }>
+  params: { slug: string }
 }) {
   const { slug } = await params
-  const comida = await getComida(slug)
-  console.log(comida)
+  const comida = getComida(slug)
 
   return <Section className="">
     <div className="relative h-100 mb-4">
@@ -34,8 +35,25 @@ export default async function ComidaPage({
         alt={comida.product.name}
       />
     </div>
-    <Container mx="4" align={"center"}>
-      <Heading as="h1" align={"center"}>{comida.product.name}</Heading>
+    <Container mx="4">
+      <Flex display="flex" direction="column" align={"center"} gap="1">
+        <Heading as="h1">{comida.product.name}</Heading>
+        <Text>{comida.product.company.companyName}</Text>
+        <Text size="5">{comida.product.currency}{comida.product.price}</Text>
+      </Flex>
     </Container>
+
+    <MapWrapper position={comida.product.location.coordinates} zoom={13} />
+
+    <div className="flex flex-row items-center gap-1">
+      <Text as="div" size="5" color="gray">
+        {comida.rating.overallRating}
+      </Text>
+      <Rating value={comida.rating.overallRating} readOnly>
+        {Array.from({ length: 5 }).map((_, index) => (
+          <RatingButton className="text-yellow-500" key={index} />
+        ))}
+      </Rating>
+    </div>
   </Section>
 }
