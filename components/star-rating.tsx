@@ -7,8 +7,8 @@ type StarRatingProps = {
 
 const StarRating: React.FC<StarRatingProps> = ({ rating }) => {
   return (
-    <Flex direction={"row"} align="center" gap="1">
-      <Text as="div" size="5" color="gray">
+    <Flex direction={"row"} justify="end" gap="1">
+      <Text as="div" size="4" color="gray">
         {rating}
       </Text>
 
